@@ -5,18 +5,13 @@ import Person from './Person.entity';
 @Entity('client')
 export default class Clients extends Person {
   @Column({
-    unique: true,
-    length: 10,
-  })
-  card_number: string;
-
-  @Column({
     default: 0,
   })
   balance: number;
 
   @Column({
     name: 'active',
+    default: true,
   })
   is_active: boolean;
 
