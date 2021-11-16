@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import express from 'express';
+import express, { Request, Response } from 'express';
 import helmet from 'helmet';
 import 'express-async-errors';
 
@@ -14,6 +14,14 @@ const PORT = 3000;
 //global middlewares
 app.use(express.json());
 app.use(helmet());
+
+//home route
+app.get('/', (_: Request, res: Response) => res.redirect('/api/v1'));
+app.get('/api/v1', (_: Request, res: Response) =>
+  res.send(
+    '<div style="display:flex; flex-direction:column; justify-content:center"><h1>Welcome to this simple banking api.</h1></div>'
+  )
+);
 
 //route middlewares
 app.use('/api/v1/client', client);
