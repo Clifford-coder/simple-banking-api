@@ -10,7 +10,7 @@ import {
 } from 'typeorm';
 import Client from './clients.entity';
 
-enum TransactionType {
+export enum TransactionType {
   DEPOSIT = 'deposit',
   WITHDRAWAL = 'withdrawal',
 }
