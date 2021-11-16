@@ -1,9 +1,11 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import helmet from 'helmet';
+import 'express-async-errors';
 
 import connectDB from './db/connectDB';
 import { banker, client } from './routes';
+import { errorHandler, routeNotFound } from './middlewares';
 
 dotenv.config();
 const app = express();
@@ -16,6 +18,10 @@ app.use(helmet());
 //route middlewares
 app.use('/api/v1/client', client);
 app.use('/api/v1/banker', banker);
+
+// error midddlewares
+app.use(errorHandler);
+app.use(routeNotFound);
 
 const start = async () => {
   try {
