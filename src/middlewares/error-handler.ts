@@ -6,6 +6,7 @@ const errorHandler = (
   res: Response,
   next: NextFunction
 ) => {
+  console.log({ err });
   if (err.message === 'Bad Request')
     return res.status(400).json({ message: 'Bad Request' });
   if (err.message === 'Not found')
